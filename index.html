@@ -1,8 +1,17 @@
 <html>
-  <body>
-    <script>
-      const urlToRedirectTo = new URLSearchParams(window.location.search).get('to')
-      window.location.href = urlToRedirectTo
-    </script>
-  </body>
+    <body>
+        <script>
+            window.onload = function () {
+                const urlToRedirectTo = new URLSearchParams(
+                    window.location.search,
+                ).get("to");
+
+                const link = document.createElement("a");
+                link.href = urlToRedirectTo;
+                link.textContent = `Redirect to: ${urlToRedirectTo}`;
+                document.body.appendChild(link);
+                window.location.href = urlToRedirectTo;
+            };
+        </script>
+    </body>
 </html>
