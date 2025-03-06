@@ -1,17 +1,43 @@
 <html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <style>
+            .container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+            #redirect-link {
+                background-color: blue;
+                border-radius: 16px;
+                border: none;
+                color: white;
+                padding: 10px 20px;
+                text-decoration: none;
+                font-family: Arial, Helvetica, sans-serif;
+                -webkit-tap-highlight-color: transparent;
+            }
+            @media (max-width: 768px) {
+                #redirect-link {
+                    padding: 12px 24px;
+                    font-size: 16px;
+                }
+            }
+        </style>
+    </head>
     <body>
+        <div class="container">
+            <a id="redirect-link" target="_blank">Open</a>
+        </div>
         <script>
-            window.onload = function () {
-                const urlToRedirectTo = new URLSearchParams(
-                    window.location.search,
-                ).get("to");
+            const urlToRedirectTo = new URLSearchParams(
+                window.location.search,
+            ).get("to");
 
-                const link = document.createElement("a");
-                link.href = urlToRedirectTo;
-                link.textContent = `Redirect to: ${urlToRedirectTo}`;
-                document.body.appendChild(link);
-                window.location.href = urlToRedirectTo;
-            };
+            const link = document.querySelector("#redirect-link");
+            link.href = urlToRedirectTo;
+            window.location.href = urlToRedirectTo;
         </script>
     </body>
 </html>
